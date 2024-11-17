@@ -1,7 +1,3 @@
---[[
-	-- V1.0 -- 13.11.2024 18:41 -- Eisenmonoxid
---]]
-
 function Mission_FirstMapAction()
 	Script.Load("maps/externalmap/" ..Framework.GetCurrentMapName().. "/questsystembehavior.lua");
 
@@ -23,8 +19,8 @@ function Mission_LoadFiles() return {}; end
 -- Diese Funktion wird nach Spielstart aufgerufen.
 --
 function Mission_OnQsbLoaded()
-	API.ActivateDebugMode(true, true, true, true);
-	API.ToggleDisplayScriptErrors(true);
+	API.ActivateDebugMode(false, false, false, false);
+	API.ToggleDisplayScriptErrors(false);
 
 	local Path = (ISDEBUG == true) and "C:\\Siedler\\" or "maps/externalmap/" ..Framework.GetCurrentMapName().. "/";
 	-- Load Hook
@@ -35,8 +31,8 @@ function Mission_OnQsbLoaded()
 	
 	API.AddScriptEventListener(QSB.ScriptEvents.SaveGameLoaded, function()
 		HookLibHandler.Initialize(true) -- Potential Exit Point
-		API.ActivateDebugMode(true, true, true, true);
-		API.ToggleDisplayScriptErrors(true);
+		API.ActivateDebugMode(false, false, false, false);
+		API.ToggleDisplayScriptErrors(false);
 	end);
 
 	SetupGameParameters();
@@ -98,23 +94,24 @@ SetupGameParameters = function()
 	API.SetPlayerPortrait(8, "H_NPC_Villager01_NE");
 
 	API.AddGoodOffer(2, Goods.G_Wool, 3, 65);
-	API.AddGoodOffer(2, Goods.G_Soap, 2, 65);
-	API.AddMercenaryOffer(2, Entities.U_SiegeEngineCart, 1, 65);
+	API.AddGoodOffer(2, Goods.G_Grain, 4, 45);
+	API.AddGoodOffer(2, Goods.G_Stone, 4, 45);
+	API.AddGoodOffer(2, Goods.G_Iron, 4, 45);
 	
-	API.AddGoodOffer(4, Goods.G_Gems, 3, 25);
-	API.AddGoodOffer(4, Goods.G_Dye, 3, 25);
-	API.AddGoodOffer(4, Goods.G_MusicalInstrument, 3, 25);
-	API.AddGoodOffer(4, Goods.G_Olibanum, 3, 25);
+	API.AddGoodOffer(4, Goods.G_Gems, 4, 25);
+	API.AddGoodOffer(4, Goods.G_Dye, 4, 25);
+	API.AddGoodOffer(4, Goods.G_Salt, 4, 25);
+	API.AddGoodOffer(4, Goods.G_Olibanum, 4, 25);
 	
-	API.AddGoodOffer(6, Goods.G_Salt, 3, 45);
-	API.AddGoodOffer(6, Goods.G_Dye, 3, 45);
-	API.AddGoodOffer(6, Goods.G_MusicalInstrument, 3, 45);
+	API.AddGoodOffer(6, Goods.G_Salt, 4, 45);
+	API.AddGoodOffer(6, Goods.G_Dye, 4, 45);
+	API.AddGoodOffer(6, Goods.G_MusicalInstrument, 4, 45);
 	API.AddGoodOffer(6, Goods.G_Cheese, 2, 45);
 	
 	API.AddGoodOffer(7, Goods.G_Sheep, 2, 85);
-	API.AddGoodOffer(7, Goods.G_Olibanum, 3, 45);
+	API.AddGoodOffer(7, Goods.G_Olibanum, 4, 45);
 	API.AddGoodOffer(7, Goods.G_Cow, 2, 85);
-	API.AddGoodOffer(7, Goods.G_Gems, 3, 45);
+	API.AddGoodOffer(7, Goods.G_Gems, 4, 45);
 	
 	API.AddMercenaryOffer(8, Entities.U_AmmunitionCart, 1, 45);
 	API.AddGoodOffer(8, Goods.G_Medicine, 3, 45);
@@ -180,10 +177,10 @@ InitializeTradeposts = function()
 	local TradepostID = GetID("tradepost_03") -- Hafen
     Logic.TradePost_SetTradePartnerGenerateGoodsFlag(TradepostID, true)
     Logic.TradePost_SetTradePartnerPlayerID(TradepostID, 6)
-    Logic.TradePost_SetTradeDefinition(TradepostID, 0, Goods.G_Wood, 12, Goods.G_Salt, 18)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 1, Goods.G_Carcass, 12, Goods.G_Dye, 18)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 2, Goods.G_Carcass, 15, Goods.G_Cheese, 12)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 3, Goods.G_Grain, 15, Goods.G_Salt, 25)
+    Logic.TradePost_SetTradeDefinition(TradepostID, 0, Goods.G_Wood, 8, Goods.G_Salt, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 1, Goods.G_Grain, 8, Goods.G_Dye, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 2, Goods.G_Carcass, 12, Goods.G_Cheese, 12)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 3, Goods.G_Grain, 12, Goods.G_Salt, 28)
 	--Logic.TradePost_SetActiveTradeSlot(TradepostID, 0)	
 	SetupInteractiveObject(TradepostID, 6, {Goods.G_Gold, 225, Goods.G_Dye, 8}, {Entities.U_GoldCart, Entities.U_ResourceMerchant})
 	API.InteractiveObjectDeactivate("tradepost_03")
@@ -191,10 +188,10 @@ InitializeTradeposts = function()
 	TradepostID = GetID("tradepost_02") -- Kloster
 	Logic.TradePost_SetTradePartnerGenerateGoodsFlag(TradepostID, true)
     Logic.TradePost_SetTradePartnerPlayerID(TradepostID, 7)
-    Logic.TradePost_SetTradeDefinition(TradepostID, 0, Goods.G_Carcass, 8, Goods.G_Gems, 12)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 1, Goods.G_Carcass, 6, Goods.G_Dye, 12)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 2, Goods.G_Carcass, 6, Goods.G_MusicalInstrument, 12)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 3, Goods.G_Carcass, 8, Goods.G_Olibanum, 12)
+    Logic.TradePost_SetTradeDefinition(TradepostID, 0, Goods.G_Wood, 8, Goods.G_Gems, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 1, Goods.G_Iron, 6, Goods.G_Dye, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 2, Goods.G_Stone, 6, Goods.G_Salt, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 3, Goods.G_Grain, 15, Goods.G_Soap, 12)
 	--Logic.TradePost_SetActiveTradeSlot(TradepostID, 0)	
 	SetupInteractiveObject(TradepostID, 6, {Goods.G_Gold, 225, Goods.G_Olibanum, 8}, {Entities.U_GoldCart, Entities.U_ResourceMerchant})
 	API.InteractiveObjectDeactivate("tradepost_02")
@@ -202,10 +199,10 @@ InitializeTradeposts = function()
 	TradepostID = GetID("tradepost_01") -- Dorf
 	Logic.TradePost_SetTradePartnerGenerateGoodsFlag(TradepostID, true)
     Logic.TradePost_SetTradePartnerPlayerID(TradepostID, 4)
-    Logic.TradePost_SetTradeDefinition(TradepostID, 0, Goods.G_Carcass, 8, Goods.G_Gems, 12)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 1, Goods.G_Carcass, 6, Goods.G_Dye, 12)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 2, Goods.G_Carcass, 6, Goods.G_MusicalInstrument, 12)
-	Logic.TradePost_SetTradeDefinition(TradepostID, 3, Goods.G_Carcass, 8, Goods.G_Olibanum, 12)
+    Logic.TradePost_SetTradeDefinition(TradepostID, 0, Goods.G_Milk, 8, Goods.G_Gems, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 1, Goods.G_Wool, 6, Goods.G_Dye, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 2, Goods.G_Herb, 6, Goods.G_MusicalInstrument, 25)
+	Logic.TradePost_SetTradeDefinition(TradepostID, 3, Goods.G_Herb, 8, Goods.G_Olibanum, 25)
 	--Logic.TradePost_SetActiveTradeSlot(TradepostID, 0)	
 	SetupInteractiveObject(TradepostID, 6, {Goods.G_Gold, 225, Goods.G_MusicalInstrument, 8}, {Entities.U_GoldCart, Entities.U_ResourceMerchant})
 	API.InteractiveObjectDeactivate("tradepost_01")

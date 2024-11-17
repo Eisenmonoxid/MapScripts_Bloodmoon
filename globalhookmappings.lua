@@ -2,8 +2,8 @@ HookLibHandler = HookLibHandler or {}
 HookLibHandler.Mappings = HookLibHandler.Mappings or {}
 
 HookLibHandler.Mappings.StoreHouseLimits = {890, 1730, 2980, 4385};
-HookLibHandler.Mappings.SettlerLimits = {50, 50, 125, 185, 250, 250};
-HookLibHandler.Mappings.SermonSettlerLimits = {25, 45, 65, 90};
+HookLibHandler.Mappings.SettlerLimits = {50, 50, 125, 185, 300, 300};
+HookLibHandler.Mappings.SermonSettlerLimits = {25, 45, 65, 120};
 HookLibHandler.Mappings.SoldierLimits = {36, 60, 91, 126};
 HookLibHandler.Mappings.OutStockLimits = {8, 16, 20};
 HookLibHandler.Mappings.BarracksOutStockLimits = {12, 18, 30};
@@ -61,11 +61,11 @@ HookLibHandler.Mappings.GoodRequiredResourcesMapping = {
 	[Goods.G_Leather] = {{Goods.G_Carcass, 1, EntityCategories.Storehouse}, {Goods.G_Dye, 1, EntityCategories.Storehouse}},
 	-- Hygiene
 	[Goods.G_Broom] = {{Goods.G_Wood, 2, EntityCategories.Storehouse}, {Goods.G_Iron, 1, EntityCategories.Storehouse}},
-	[Goods.G_Soap] = {{Goods.G_Carcass, 2, EntityCategories.Storehouse}, {Goods.G_Milk, 1, EntityCategories.Storehouse}},
+	[Goods.G_Soap] = {{Goods.G_Carcass, 1, EntityCategories.Storehouse}, {Goods.G_Milk, 1, EntityCategories.Storehouse}},
 	[Goods.G_Medicine] = {{Goods.G_Herb, 2, EntityCategories.Storehouse}, {Goods.G_Honeycomb, 1, EntityCategories.Storehouse}},
 	-- Entertainment
 	[Goods.G_Beer] = {{Goods.G_Honeycomb, 2, EntityCategories.Storehouse}, {Goods.G_Herb, 2, EntityCategories.Storehouse}},
-	[Goods.G_EntBaths] = {{Goods.G_Water, 1, EntityCategories.G_Water_Supplier}, {Goods.G_Soap, 1, EntityCategories.CityBuilding}},
+	[Goods.G_EntBaths] = {{Goods.G_Water, 2, EntityCategories.G_Water_Supplier}, {Goods.G_Soap, 1, EntityCategories.GC_Hygiene_Supplier}},
 	[Goods.G_PlayMaterial] = {{Goods.G_Wool, 2, EntityCategories.Storehouse}, {Goods.G_Wood, 2, EntityCategories.Storehouse}},
 	-- Military
 	[Goods.G_PoorSword] = {{Goods.G_Iron, 2, EntityCategories.Storehouse}, {Goods.G_Wood, 1, EntityCategories.Storehouse}},

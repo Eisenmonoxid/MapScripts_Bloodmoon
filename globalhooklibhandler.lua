@@ -30,11 +30,11 @@ HookLibHandler.SetupMainHookValues = function()
 	EMXHookLibrary.SetMaxBuildingTaxAmount(250)
 	EMXHookLibrary.SetBuildingKnockDownCompensation(50)
 	EMXHookLibrary.EditFestivalProperties(90, 15, 15, 35)
-	EMXHookLibrary.SetCathedralCollectAmount(10)
+	EMXHookLibrary.SetCathedralCollectAmount(15)
 	EMXHookLibrary.SetAmountOfTaxCollectors(8)
 	EMXHookLibrary.SetFogOfWarVisibilityFactor(1)
 	EMXHookLibrary.SetKnightResurrectionTime(25000)
-	EMXHookLibrary.SetSettlerIllnessCount(90)
+	EMXHookLibrary.SetSettlerIllnessCount(125)
 
 	for i = 0, #HookLibHandler.Mappings.SettlerLimits do
 		EMXHookLibrary.SetSettlerLimit(i, HookLibHandler.Mappings.SettlerLimits[i + 1])
@@ -89,10 +89,10 @@ HookLibHandler.SetupEntityCostsAndStocks = function()
 			EMXHookLibrary.SetEntityTypeUpgradeCost(Value, 1, {Goods.G_Gold, math.random(25, 35), Goods.G_Stone, 4}, true, true);
 			
 			EMXHookLibrary.SetEntityTypeOutStockCapacity(Value, 0, HookLibHandler.Mappings.OutStockLimits[1])
-			EMXHookLibrary.SetEntityTypeOutStockCapacity(Value, 1, HookLibHandler.Mappings.OutStockLimits[1])
-			EMXHookLibrary.SetEntityTypeOutStockCapacity(Value, 2, HookLibHandler.Mappings.OutStockLimits[1])
+			EMXHookLibrary.SetEntityTypeOutStockCapacity(Value, 1, HookLibHandler.Mappings.OutStockLimits[2])
+			EMXHookLibrary.SetEntityTypeOutStockCapacity(Value, 2, HookLibHandler.Mappings.OutStockLimits[3])
 
-			EMXHookLibrary.SetEntityTypeSpouseProbabilityFactor(Value, 0.2)
+			EMXHookLibrary.SetEntityTypeSpouseProbabilityFactor(Value, 0.3)
 		end
 	end
 	
